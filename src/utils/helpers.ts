@@ -27,22 +27,6 @@ export const formatCurrency = (value: number) => {
   }).format(value)
 }
 
-export const formatMonthLabel = (
-  month: Option<number>,
-  startedMonth: number
-) => {
-  const currentMonth = new Date().getMonth()
-  const isFromNextYear =
-    month.value < startedMonth && month.value > currentMonth
-  const isFromPreviousYear =
-    month.value > startedMonth && month.value < currentMonth
-  const currentYear = new Date().getFullYear()
-  if (isFromPreviousYear) {
-    return month.label + ' ' + (currentYear - 1)
-  }
-  return !isFromNextYear ? month.label : month.label + ' ' + (currentYear + 1)
-}
-
 export const downloadJsonToFile = <T>(data: T) => {
   try {
     const json = JSON.stringify(data, null, 2)

@@ -1,9 +1,5 @@
 import clsx from 'clsx'
-import {
-  formatCurrency,
-  formatMonthLabel,
-  getMonthsNamesFromIndex,
-} from '../../utils/helpers'
+import { formatCurrency, getMonthsNamesFromIndex } from '../../utils/helpers'
 import { Payment } from '../../utils/types'
 
 interface PaymentsTableProps {
@@ -49,9 +45,7 @@ function PaymentsTable({
                     })}
                   >
                     <td>{index + 1}</td>
-                    <td>
-                      {formatMonthLabel(month, selectedPayment.paymentMonth)}
-                    </td>
+                    <td>{month.label}</td>
                     <td>{formatCurrency(monthlyPayment)}</td>
                     <td>{formatCurrency(totalAccumulated)}</td>
                     <td>
