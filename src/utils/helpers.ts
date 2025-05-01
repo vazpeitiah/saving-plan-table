@@ -27,17 +27,6 @@ export const formatCurrency = (value: number) => {
   }).format(value)
 }
 
-export const isBeforeToday = (month: number, startedMonth: number) => {
-  const isFromNextYear = startedMonth !== 0 && month < startedMonth
-  const currentYear = new Date().getFullYear()
-  const date = new Date(
-    isFromNextYear ? currentYear + 1 : currentYear,
-    month,
-    1
-  )
-  return date < new Date()
-}
-
 export const formatMonthLabel = (
   month: Option<number>,
   startedMonth: number

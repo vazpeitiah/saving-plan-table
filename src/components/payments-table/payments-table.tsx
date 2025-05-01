@@ -3,7 +3,6 @@ import {
   formatCurrency,
   formatMonthLabel,
   getMonthsNamesFromIndex,
-  isBeforeToday,
 } from '../../utils/helpers'
 import { Payment } from '../../utils/types'
 
@@ -35,17 +34,18 @@ function PaymentsTable({
         <tbody>
           {selectedPayment &&
             getMonthsNamesFromIndex(selectedPayment.paymentMonth).map(
-              (month, index) => {
+              (month, index, arr) => {
                 const monthlyPayment = Math.round(selectedPayment.amount / 12)
                 const totalAccumulated = monthlyPayment * (index + 1)
+                const paymentMonthIndex = arr.findIndex(
+                  (m) => m.value === new Date().getMonth()
+                )
+
                 return (
                   <tr
                     key={month.label}
                     className={clsx({
-                      ['bg-base-200']: isBeforeToday(
-                        month.value,
-                        selectedPayment.paymentMonth
-                      ),
+                      ['bg-base-200']: index <= paymentMonthIndex,
                     })}
                   >
                     <td>{index + 1}</td>
