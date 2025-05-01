@@ -44,7 +44,7 @@ function App() {
   useEffect(() => {
     if (payments.length === 0) return
     setSelectedPaymentIndex(0)
-  }, [payments])
+  }, [])
 
   useEffect(() => {
     if (!modalRef.current) return
